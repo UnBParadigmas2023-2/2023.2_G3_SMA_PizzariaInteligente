@@ -12,7 +12,9 @@ public class Pizzaria {
 		AgentController seller;
 
 		try {
-        	seller = container.createNewAgent("montagem", "agents.AgenteMontagem", null);
+			seller = container.createNewAgent("recepcao", "agents.AgenteRecepcao", null);
+			seller.start();
+        	seller = container.createNewAgent("montador", "agents.AgenteMontagem", null);
 			seller.start();
 			seller = container.createNewAgent("assador", "agents.AgenteAssador", null);
 			seller.start();
