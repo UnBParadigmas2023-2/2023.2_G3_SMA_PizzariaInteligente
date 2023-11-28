@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/art42/Documents/jade/JADE-all-4.6.0/jade/lib/jade.jar",
+        "/home/art42/Documents/jade/JADE-all-4.6.0/jade/lib/jadeExamples.jar",
+        "/home/art42/Documents/jade/JADE-all-4.6.0/jade/lib/commons-codec/commons-codec-1.3.jar"
+    ]
+}

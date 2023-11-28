@@ -1,11 +1,19 @@
 import jade.core.Runtime;
+import FIPA.stringsHolder;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
-public class Pizzaria {	
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Pizzaria extends Application{	
 	public static void main(String[] args) {
-		
+		launch(args);
+
 		Runtime rt = Runtime.instance();
 		Profile p = new ProfileImpl();
 		ContainerController container = rt.createMainContainer(p);
@@ -22,6 +30,14 @@ public class Pizzaria {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("hellofx.fxml"));
+		primaryStage.setTitle("Hello World");
+		primaryStage.setScene(new Scene(root,1600,900));
+		primaryStage.show();
 	}
 
  }

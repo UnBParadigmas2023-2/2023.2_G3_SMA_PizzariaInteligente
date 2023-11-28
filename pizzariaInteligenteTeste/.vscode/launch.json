@@ -6,38 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "MeuSMA",
+            "name": "Pizzaria",
             "request": "launch",
-            "mainClass": "test.MeuSMA",
-            "projectName": "pizzariaInteligente_eb480600"
-        },
-        {
-            "type": "java",
-            "name": "MeuSMA",
-            "request": "launch",
-            "mainClass": "MeuSMA",
-            "projectName": "pizzariaInteligente_eb480600"
-        },
-        {
-            "type": "java",
-            "name": "MeuSMA",
-            "request": "launch",
-            "mainClass": "hello.MeuSMA",
-            "projectName": "pizzariaInteligente_eb480600"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "hello.Main",
-            "projectName": "pizzariaInteligente_eb480600"
-        },
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${}",
-            "vmArgs": " -gui -local-host 127.0.0.1 -localport 8082 jade.Boot customAgent:customAgents.HelloAgent"
+            "mainClass": "Pizzaria",
+            "projectName": "pizzariaInteligenteTeste_70ff5c32"
         }
     ]
 }

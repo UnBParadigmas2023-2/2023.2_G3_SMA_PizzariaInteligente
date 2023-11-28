@@ -69,9 +69,9 @@ public class AgenteRecepcao extends Agent {
 
 			default:
 				System.out.println("Opção inválida.");
-			}
+				break;
 
-			return;
+			}
 
 		} while(opcao != 4);
 		
