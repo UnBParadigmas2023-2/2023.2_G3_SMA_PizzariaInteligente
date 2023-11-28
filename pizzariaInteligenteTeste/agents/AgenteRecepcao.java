@@ -41,34 +41,40 @@ public class AgenteRecepcao extends Agent {
 
 		int opcao;
 		Scanner entrada = new Scanner(System.in);
-		
-		System.out.println("\tPizzaria inteligente");
-		System.out.println("1. Adicionar pizza");
-		System.out.println("2. Entregar pizza");
-		System.out.println("3. verificar filas");
-		System.out.println("4. sair");
-		System.out.println("Opcao:");
 
-		opcao = entrada.nextInt();
-		
-		switch(opcao){
-		case 1:
-			adicionarPizza();
-			break;
+		do{
+
+			System.out.println("\tPizzaria inteligente");
+			System.out.println("1. Adicionar pizza");
+			System.out.println("2. Entregar pizza");
+			System.out.println("3. verificar filas");
+			System.out.println("4. sair");
+			System.out.println("Opcao:");
+
+
+			opcao = entrada.nextInt();
 			
-		case 2:
-			entregarPizza();
-			break;
-			
-		case 3:
-			verificarFilas();
-			break;
+			switch(opcao){
+			case 1:
+				adicionarPizza();
+				break;
+				
+			case 2:
+				entregarPizza();
+				break;
+				
+			case 3:
+				verificarFilas();
+				break;
 
-		default:
-			System.out.println("Opção inválida.");
-		}
+			default:
+				System.out.println("Opção inválida.");
+			}
 
-		return;
+			return;
+
+		} while(opcao != 4);
+		
     }
 
 	public void adicionarPizza(){
@@ -81,9 +87,7 @@ public class AgenteRecepcao extends Agent {
 			msgRx.setContent(pizzaEscolhida);  
 			send(msgRx);
 			System.out.println("Enviado para montagem: " + pizzaEscolhida);
-		
-		menu();
-		
+				
 		return;
 
     }
@@ -98,11 +102,9 @@ public class AgenteRecepcao extends Agent {
 		Scanner in = new Scanner(System.in); 
 		pizzasEntregar.remove(in.nextInt() - 1);
 
-		menu();
     }
     
     public void verificarFilas(){
         System.out.println("Você entrou no método Exclui.");
-		menu();
     }
 }
