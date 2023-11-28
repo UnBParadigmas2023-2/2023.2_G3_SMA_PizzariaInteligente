@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MeuSMA",
+            "request": "launch",
+            "mainClass": "test.MeuSMA",
+            "projectName": "pizzariaInteligente_eb480600"
+        },
+        {
+            "type": "java",
+            "name": "MeuSMA",
+            "request": "launch",
+            "mainClass": "MeuSMA",
+            "projectName": "pizzariaInteligente_eb480600"
+        },
+        {
+            "type": "java",
+            "name": "MeuSMA",
+            "request": "launch",
+            "mainClass": "hello.MeuSMA",
+            "projectName": "pizzariaInteligente_eb480600"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "hello.Main",
+            "projectName": "pizzariaInteligente_eb480600"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${}",
+            "vmArgs": " -gui -local-host 127.0.0.1 -localport 8082 jade.Boot customAgent:customAgents.HelloAgent"
+        }
+    ]
+}
