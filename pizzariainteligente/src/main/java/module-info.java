@@ -5,4 +5,5 @@ module pizzariainteligente {
 
     opens pizzariainteligente to javafx.fxml;
     exports pizzariainteligente;
+    exports pizzariainteligente.agents;
 }
