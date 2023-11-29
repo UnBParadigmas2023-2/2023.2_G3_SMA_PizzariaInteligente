@@ -1,7 +1,6 @@
 package pizzariainteligente;
 
 import jade.core.Runtime;
-import FIPA.stringsHolder;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentController;
