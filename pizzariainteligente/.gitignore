@@ -1,0 +1,8 @@
+./target/*
+./maven-status/*
+
+\target\*
+\maven-status\*
+
+MTPs-Main-Container.txt
+APDescription.txt
