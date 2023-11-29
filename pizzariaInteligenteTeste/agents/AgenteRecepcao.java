@@ -88,18 +88,36 @@ public class AgenteRecepcao extends Agent {
 
     }
     
-    public void entregarPizza(){
-
-        System.out.println("Qual pizza você quer entregar?\n");
+	public void entregarPizza() {
+		System.out.println("Qual pizza você quer entregar?\n");
 		for (int i = 0; i < pizzasEntregar.size(); i++) {
 			System.out.println(i + 1 + ". " + pizzasEntregar.get(i));
 		}
+	
+		Scanner in = new Scanner(System.in);
+		int pizzaIndex = in.nextInt() - 1;
 		
-		Scanner in = new Scanner(System.in); 
-		pizzasEntregar.remove(in.nextInt() - 1);
-
+		// Verifica se o índice fornecido é válido
+		if (pizzaIndex >= 0 && pizzaIndex < pizzasEntregar.size()) {
+			String pizzaEntregar = pizzasEntregar.get(pizzaIndex);
+	
+			// Envia a pizza para o agente de montagem
+			ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+			msgRx.addReceiver(new AID("montador", false));
+			msgRx.setContent(pizzaEntregar);
+			send(msgRx);
+			System.out.println("Enviado para montagem: " + pizzaEntregar);
+	
+			// Remove a pizza da lista de pizzas a entregar
+			pizzasEntregar.remove(pizzaIndex);
+		} else {
+			System.out.println("Índice inválido. Tente novamente.");
+		}
+	
 		menu();
-    }
+	}
+	
+	
     
     public void verificarFilas(){
         System.out.println("Você entrou no método Exclui.");

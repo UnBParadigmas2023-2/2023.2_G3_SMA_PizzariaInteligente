@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/luiza/jade/lib/jadeExamples.jar",
+        "/home/luiza/jade/lib/jade.jar"
+    ]
+}
