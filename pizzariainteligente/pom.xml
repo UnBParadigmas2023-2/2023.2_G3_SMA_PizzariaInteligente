@@ -1,14 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>pizzariainteligente</groupId>
     <artifactId>pizzariainteligente</artifactId>
     <version>1.0-SNAPSHOT</version>
     <repositories>
         <repository>
-          <id>jade-repo</id>
-          <name>Jade repository</name>
-          <url>https://jade.tilab.com/maven/</url>
+            <id>jade-repo</id>
+            <name>Jade repository</name>
+            <url>https://jade.tilab.com/maven/</url>
         </repository>
     </repositories>
     <properties>
@@ -68,7 +69,11 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>pizzariainteligente.App</mainClass>
+                            <!--
+                                PARA EXECUTAR O FRONT É NECESSÁRIO
+                                TROCAR O .Main PARA .App
+                            -->
+                            <mainClass>pizzariainteligente.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>
