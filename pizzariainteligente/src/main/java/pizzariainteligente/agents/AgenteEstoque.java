@@ -9,10 +9,17 @@ import java.util.Map;
 
 public class AgenteEstoque extends Agent {
 
+    private Map<String, Integer> estoqueIngredientes;
     private Map<String, ReceitaPizza> receitasPizza;
 
     @Override
     protected void setup() {
+        estoqueIngredientes = new HashMap<>();
+        estoqueIngredientes.put("Massa", 50);
+        estoqueIngredientes.put("Molho", 30);
+        estoqueIngredientes.put("Queijo", 40);
+        estoqueIngredientes.put("Fatias Pepperoni", 10);
+
         receitasPizza = new HashMap<>();
         initializeReceitaPizzas();
 
@@ -47,12 +54,58 @@ public class AgenteEstoque extends Agent {
         }
 
         private void handleOrder(ACLMessage order) {
-            String flavor = order.getContent();
+            String saborEscolhido = order.getContent();
 
-            if (receitasPizza.containsKey(flavor)) {
-                System.out.println("Sabor existe");
+            if (receitasPizza.containsKey(saborEscolhido)) {
+                if(possuiIngredientes(saborEscolhido)){
+                    removerDoEstoque(saborEscolhido);
+                    System.out.println("Estoque atualizado: " + estoqueIngredientes);
+
+                    ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+                    msgRx.addReceiver(new AID("montador", false));
+                    msgRx.setContent(saborEscolhido);
+                    send(msgRx);
+                    System.out.println("Enviado para montagem: " + saborEscolhido);
+                }
+                else {
+                    ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+                    msgRx.addReceiver(new AID("recepcao", false));
+                    msgRx.setContent(saborEscolhido+"-ingredientes insuficientes");
+                    send(msgRx);
+
+                    System.out.println("enviado pra recepcao");
+                }
             } else {
-                System.out.println("Sabor não existe");
+                ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+                msgRx.addReceiver(new AID("recepcao", false));
+                msgRx.setContent(saborEscolhido+"-sabor não existe");
+                send(msgRx);
+
+                System.out.println("enviado pra recepcao");
+            }
+        }
+
+        private boolean possuiIngredientes(String sabor) {
+            Map<String, Integer> ingredientes = receitasPizza.get(sabor).getIngredients();
+            for (Map.Entry<String, Integer> item : ingredientes.entrySet()) {
+                String ingrediente = item.getKey();
+                int qtdNecessaria = item.getValue();
+
+                if (!estoqueIngredientes.containsKey(ingrediente) || estoqueIngredientes.get(ingrediente) < qtdNecessaria) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void removerDoEstoque(String sabor){
+            Map<String, Integer> ingredientes = receitasPizza.get(sabor).getIngredients();
+            for (Map.Entry<String, Integer> item : ingredientes.entrySet()) {
+                String ingrediente = item.getKey();
+                int qtdNecessaria = item.getValue();
+                int qtdAtual = estoqueIngredientes.get(ingrediente);
+
+                estoqueIngredientes.replace(ingrediente, qtdAtual-qtdNecessaria);
             }
         }
     }
