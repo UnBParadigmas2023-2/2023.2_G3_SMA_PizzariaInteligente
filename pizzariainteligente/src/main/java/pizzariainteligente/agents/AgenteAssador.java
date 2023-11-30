@@ -1,63 +1,37 @@
+
 package pizzariainteligente.agents;
 
+import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-import jade.core.AID;
-import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.TickerBehaviour;
-import jade.lang.acl.ACLMessage;
-
 public class AgenteAssador extends Agent {
-	public void setup() {
-		addBehaviour(new TickerBehaviour(this, 20000) {
-			public void onTick() {
-				ACLMessage msgPizzaAssar = receive();
-				if (msgPizzaAssar != null) {
-					System.out.println("Pizza assando: " + msgPizzaAssar.getContent());
+    private List<String> pizzasAssar = new ArrayList<>();
 
-					ACLMessage msgPizzaPronta = new ACLMessage(ACLMessage.REQUEST);
-					msgPizzaPronta.addReceiver(new AID("recepcao", false));
-					msgPizzaPronta.setContent(msgPizzaAssar.getContent());
-					send(msgPizzaPronta);
-					System.out.println("Enviado para recepcao: " + msgPizzaAssar.getContent());
-				} else {
-					block();
-				}
-			}
-		});
+    protected void setup() {
+        addBehaviour(new AssarPizza());
+    }
 
-		List<String> pizzasAssar = new ArrayList<String>();
+    private class AssarPizza extends CyclicBehaviour {
+        public void action() {
+            if (!pizzasAssar.isEmpty()) {
+                String nomePizza = pizzasAssar.get(0);
 
-		addBehaviour(new TickerBehaviour(this, 10000) {
-			@Override
-			public void onTick() {
-				if (pizzasAssar.size() > 0) {
-					String pizzaAtual = pizzasAssar.remove(0);
-					System.out.println("Assado pizza: " + pizzaAtual);
+                // Simular tempo de assagem
+                doWait(20000);
+                System.out.println("Pizza assada: " + nomePizza);
 
-					ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
-					msgRx.addReceiver(new AID("recepcao", false));
-					msgRx.setContent(pizzaAtual);
-					send(msgRx);
-					System.out.println("Enviado para recepcao: " + pizzaAtual);
+                // Enviar pizza para AgenteRecepcao
+                ACLMessage mensagem = new ACLMessage(ACLMessage.INFORM);
+                mensagem.setContent(nomePizza);
+                mensagem.addReceiver(getAID("AgenteRecepcao"));
+                send(mensagem);
 
-				}
-			}
-		});
-
-		addBehaviour(new CyclicBehaviour() {
-			public void action() {
-				ACLMessage msgRx = receive();
-				if (msgRx != null) {
-					System.out.println("Pizza Recebida para assar: " + msgRx.getContent());
-					pizzasAssar.add(msgRx.getContent());
-					System.out.println("Pizzas na fila para assar: " + String.join(", ", pizzasAssar));
-				} else {
-					block();
-				}
-			}
-		});
-	}
+                // Remover pizza da lista
+                pizzasAssar.remove(0);
+            }
+        }
+    }
 }

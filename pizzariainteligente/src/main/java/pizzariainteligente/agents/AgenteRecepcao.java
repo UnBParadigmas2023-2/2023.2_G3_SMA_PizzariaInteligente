@@ -1,110 +1,62 @@
+
 package pizzariainteligente.agents;
 
+import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import jade.core.AID;
-import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
-import jade.lang.acl.ACLMessage;
-
 public class AgenteRecepcao extends Agent {
+    private List<String> pizzasProntas = new ArrayList<>();
 
-	List<String> pizzasEntregar = new ArrayList<String>();
-
-    public void setup() {
-
-		addBehaviour(new CyclicBehaviour() {
-			public void action() {
-				ACLMessage msgRx = receive();
-				if (msgRx != null) {
-                    System.out.println("Pizza Recebida para entregar: " + msgRx.getContent());
-                    pizzasEntregar.add(msgRx.getContent());
-                    System.out.println("Pizzas na fila para entregar: " + String.join(", ", pizzasEntregar));
-				} else {
-					block();
-				}
-			}
-		});
-
-		addBehaviour(new OneShotBehaviour(){
-			public void action() {
-				menu();
-			}
-		});
-
-	}
-
-	public void menu(){
-
-		int opcao;
-		Scanner entrada = new Scanner(System.in);
-
-		do{
-
-			System.out.println("\tPizzaria inteligente");
-			System.out.println("1. Adicionar pizza");
-			System.out.println("2. Entregar pizza");
-			System.out.println("3. verificar filas");
-			System.out.println("4. sair");
-			System.out.println("Opcao:");
-
-
-			opcao = entrada.nextInt();
-			
-			switch(opcao){
-			case 1:
-				adicionarPizza();
-				break;
-				
-			case 2:
-				entregarPizza();
-				break;
-				
-			case 3:
-				verificarFilas();
-				break;
-
-			default:
-				System.out.println("Opção inválida.");
-				break;
-
-			}
-
-		} while(opcao != 4);
-		
+    protected void setup() {
+        addBehaviour(new ReceberPedidos());
+        addBehaviour(new RealizarEntrega());
     }
 
-	public void adicionarPizza(){
-		System.out.println("Qual pizza você quer?");
-		Scanner in = new Scanner(System.in); 
-		String pizzaEscolhida = in.nextLine();
+    private class ReceberPedidos extends CyclicBehaviour {
+        public void action() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Menu:");
+            System.out.println("1. Adicionar pizza");
+            System.out.println("2. Sair");
+            System.out.print("Escolha uma opção: ");
 
-		ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
-			msgRx.addReceiver(new AID("montador", false));
-			msgRx.setContent(pizzaEscolhida);  
-			send(msgRx);
-			System.out.println("Enviado para montagem: " + pizzaEscolhida);
-				
-		return;
+            int escolha = scanner.nextInt();
 
+            if (escolha == 1) {
+                System.out.print("Digite o nome da pizza: ");
+                String nomePizza = scanner.next();
+
+                // Enviar pizza para AgenteMontagem
+                ACLMessage mensagem = new ACLMessage(ACLMessage.REQUEST);
+                mensagem.setContent(nomePizza);
+                mensagem.addReceiver(getAID("AgenteMontagem"));
+                send(mensagem);
+
+                System.out.println("Pizza adicionada com sucesso!");
+            } else if (escolha == 2) {
+                doDelete(); // Encerra o agente
+            }
+        }
     }
-    
-    public void entregarPizza(){
 
-        System.out.println("Qual pizza você quer entregar?\n");
-		for (int i = 0; i < pizzasEntregar.size(); i++) {
-			System.out.println(i + 1 + ". " + pizzasEntregar.get(i));
-		}
-		
-		Scanner in = new Scanner(System.in); 
-		pizzasEntregar.remove(in.nextInt() - 1);
+    private class RealizarEntrega extends CyclicBehaviour {
+        public void action() {
+            if (!pizzasProntas.isEmpty()) {
+                String nomePizza = pizzasProntas.get(0);
 
-    }
-    
-    public void verificarFilas(){
-        System.out.println("Você entrou no método Exclui.");
+                // Simular tempo de entrega
+                System.out.println("A pizza está sendo entregue...");
+                doWait(15000);
+                System.out.println("A pizza foi entregue ao cliente: " + nomePizza);
+
+                // Remover pizza da lista
+                pizzasProntas.remove(0);
+            }
+        }
     }
 }

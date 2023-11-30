@@ -1,30 +1,38 @@
 package pizzariainteligente;
 
-import jade.core.Runtime;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
+import jade.core.Runtime;
+import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
-import jade.wrapper.ContainerController;
 
 public class Main {
-  public static void main(String[] args) {
+    public static void main(String[] args) {
+        try {
+            // Criar instância do Jade Runtime
+            Runtime runtime = Runtime.instance();
 
-    Runtime rt = Runtime.instance();
-    Profile p = new ProfileImpl();
-    ContainerController container = rt.createMainContainer(p);
-    AgentController seller;
+            // Criar um perfil
+            Profile profile = new ProfileImpl();
+            profile.setParameter(Profile.MAIN_HOST, "localhost");
+            profile.setParameter(Profile.GUI, "true");
 
-    try {
-      seller = container.createNewAgent("recepcao", "pizzariainteligente.agents.AgenteRecepcao", null);
-      seller.start();
-      seller = container.createNewAgent("montador", "pizzariainteligente.agents.AgenteMontagem", null);
-      seller.start();
-      seller = container.createNewAgent("assador", "pizzariainteligente.agents.AgenteAssador", null);
-      seller.start();
+            // Criar o container principal
+            AgentContainer mainContainer = runtime.createMainContainer(profile);
 
-    } catch (Exception e) {
-      e.printStackTrace();
+            // Iniciar o AgenteRecepcao
+            AgentController agRecepcao = mainContainer.createNewAgent("AgenteRecepcao", "pizzariainteligente.agents.AgenteRecepcao", null);
+            agRecepcao.start();
+
+            // Iniciar o AgenteMontagem
+            AgentController agMontagem = mainContainer.createNewAgent("AgenteMontagem", "pizzariainteligente.agents.AgenteMontagem", null);
+            agMontagem.start();
+
+            // Iniciar o AgenteAssador
+            AgentController agAssador = mainContainer.createNewAgent("AgenteAssador", "pizzariainteligente.agents.AgenteAssador", null);
+            agAssador.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-  }
-
 }
