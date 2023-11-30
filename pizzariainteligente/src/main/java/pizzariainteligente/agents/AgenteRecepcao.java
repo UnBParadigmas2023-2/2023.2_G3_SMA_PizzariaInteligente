@@ -83,10 +83,10 @@ public class AgenteRecepcao extends Agent {
 		String pizzaEscolhida = in.nextLine();
 
 		ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
-			msgRx.addReceiver(new AID("montador", false));
+			msgRx.addReceiver(new AID("estoque", false));
 			msgRx.setContent(pizzaEscolhida);  
 			send(msgRx);
-			System.out.println("Enviado para montagem: " + pizzaEscolhida);
+			System.out.println("Verificação de estoque solicitada para pizza: " + pizzaEscolhida);
 				
 		return;
 

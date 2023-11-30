@@ -17,6 +17,8 @@ public class Main {
     try {
       seller = container.createNewAgent("recepcao", "pizzariainteligente.agents.AgenteRecepcao", null);
       seller.start();
+      seller = container.createNewAgent("estoque", "pizzariainteligente.agents.AgenteEstoque", null);
+      seller.start();
       seller = container.createNewAgent("montador", "pizzariainteligente.agents.AgenteMontagem", null);
       seller.start();
       seller = container.createNewAgent("assador", "pizzariainteligente.agents.AgenteAssador", null);
