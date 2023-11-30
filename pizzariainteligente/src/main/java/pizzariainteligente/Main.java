@@ -3,6 +3,7 @@ package pizzariainteligente;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
+
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 
@@ -21,16 +22,20 @@ public class Main {
             AgentContainer mainContainer = runtime.createMainContainer(profile);
 
             // Iniciar o AgenteRecepcao
-            AgentController agRecepcao = mainContainer.createNewAgent("AgenteRecepcao", "pizzariainteligente.agents.AgenteRecepcao", null);
+            AgentController agRecepcao = mainContainer.createNewAgent("recepcao", "pizzariainteligente.agents.AgenteRecepcao", null);
             agRecepcao.start();
 
             // Iniciar o AgenteMontagem
-            AgentController agMontagem = mainContainer.createNewAgent("AgenteMontagem", "pizzariainteligente.agents.AgenteMontagem", null);
+            AgentController agMontagem = mainContainer.createNewAgent("montagem", "pizzariainteligente.agents.AgenteMontagem", null);
             agMontagem.start();
 
             // Iniciar o AgenteAssador
-            AgentController agAssador = mainContainer.createNewAgent("AgenteAssador", "pizzariainteligente.agents.AgenteAssador", null);
+            AgentController agAssador = mainContainer.createNewAgent("assador", "pizzariainteligente.agents.AgenteAssador", null);
             agAssador.start();
+
+            AgentController agMain = mainContainer.createNewAgent("main", "pizzariainteligente.agents.MainAgent", null);
+            agMain.start();
+        
         } catch (Exception e) {
             e.printStackTrace();
         }

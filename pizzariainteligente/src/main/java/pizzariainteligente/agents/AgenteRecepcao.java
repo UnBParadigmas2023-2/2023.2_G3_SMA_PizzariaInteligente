@@ -1,62 +1,46 @@
-
 package pizzariainteligente.agents;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+
 
 public class AgenteRecepcao extends Agent {
     private List<String> pizzasProntas = new ArrayList<>();
 
-    protected void setup() {
-        addBehaviour(new ReceberPedidos());
-        addBehaviour(new RealizarEntrega());
-    }
+    public void setup() {
 
-    private class ReceberPedidos extends CyclicBehaviour {
-        public void action() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Menu:");
-            System.out.println("1. Adicionar pizza");
-            System.out.println("2. Sair");
-            System.out.print("Escolha uma opção: ");
+        addBehaviour(new CyclicBehaviour(this) {
+            public void action() {
+                ACLMessage msgAssador = receive();
 
-            int escolha = scanner.nextInt();
+				
 
-            if (escolha == 1) {
-                System.out.print("Digite o nome da pizza: ");
-                String nomePizza = scanner.next();
+                if (msgAssador != null || pizzasProntas.size() != 0) {
+                    String pizzaAtual = msgAssador.getContent();
+                    pizzasProntas.add(pizzaAtual);
+                    System.out.println("A pizza " + pizzaAtual + " está sendo preparada para ser entregue");
 
-                // Enviar pizza para AgenteMontagem
-                ACLMessage mensagem = new ACLMessage(ACLMessage.REQUEST);
-                mensagem.setContent(nomePizza);
-                mensagem.addReceiver(getAID("AgenteMontagem"));
-                send(mensagem);
+                    // Simulando o tempo de assar
+                    try {
+                        TimeUnit.SECONDS.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
-                System.out.println("Pizza adicionada com sucesso!");
-            } else if (escolha == 2) {
-                doDelete(); // Encerra o agente
+                    System.out.println("A pizza " + pizzaAtual + " foi entregue");
+					pizzasProntas.remove(0);
+
+                } else {
+                    block();
+                }
             }
-        }
-    }
-
-    private class RealizarEntrega extends CyclicBehaviour {
-        public void action() {
-            if (!pizzasProntas.isEmpty()) {
-                String nomePizza = pizzasProntas.get(0);
-
-                // Simular tempo de entrega
-                System.out.println("A pizza está sendo entregue...");
-                doWait(15000);
-                System.out.println("A pizza foi entregue ao cliente: " + nomePizza);
-
-                // Remover pizza da lista
-                pizzasProntas.remove(0);
-            }
-        }
+        });
+		
     }
 }
