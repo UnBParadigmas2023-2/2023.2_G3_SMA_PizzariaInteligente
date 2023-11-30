@@ -14,26 +14,53 @@ public class AgenteEstoque extends Agent {
 
     @Override
     protected void setup() {
-        estoqueIngredientes = new HashMap<>();
-        estoqueIngredientes.put("Massa", 50);
-        estoqueIngredientes.put("Molho", 30);
-        estoqueIngredientes.put("Queijo", 40);
-        estoqueIngredientes.put("Fatias Pepperoni", 10);
-
-        receitasPizza = new HashMap<>();
-        initializeReceitaPizzas();
-
+        populaEstoqueIngredientes();
+        populaReceitaPizzas();
         addBehaviour(new GerenciadorMensagem());
     }
 
-    private void initializeReceitaPizzas() {
-        ReceitaPizza receitaPeperroni = new ReceitaPizza();
-        receitaPeperroni.addIngrediente("Massa", 1);
-        receitaPeperroni.addIngrediente("Molho", 1);
-        receitaPeperroni.addIngrediente("Queijo", 1);
-        receitaPeperroni.addIngrediente("Fatias Pepperoni", 8);
+    private void populaEstoqueIngredientes() {
+        estoqueIngredientes = new HashMap<>();
+        estoqueIngredientes.put("Massa", 50);
+        estoqueIngredientes.put("Molho", 30);
+        estoqueIngredientes.put("Queijo", 12);
+        estoqueIngredientes.put("Fatias Pepperoni", 10);
+        estoqueIngredientes.put("Folhas manjericao", 18);
+        estoqueIngredientes.put("Frango", 40);
+        estoqueIngredientes.put("Catupiry", 20);
+    }
 
-        receitasPizza.put("Pepperoni", receitaPeperroni);
+    private void populaReceitaPizzas() {
+        receitasPizza = new HashMap<>();
+
+        ReceitaPizza receitaPepperoni = new ReceitaPizza();
+        receitaPepperoni.addIngrediente("Massa", 1);
+        receitaPepperoni.addIngrediente("Molho", 1);
+        receitaPepperoni.addIngrediente("Queijo", 1);
+        receitaPepperoni.addIngrediente("Fatias Pepperoni", 8);
+
+        ReceitaPizza receitaMarguerita = new ReceitaPizza();
+        receitaMarguerita.addIngrediente("Massa", 1);
+        receitaMarguerita.addIngrediente("Molho", 1);
+        receitaMarguerita.addIngrediente("Queijo", 1);
+        receitaMarguerita.addIngrediente("Folhas manjericao", 5);
+
+        ReceitaPizza receitaFrango = new ReceitaPizza();
+        receitaFrango.addIngrediente("Massa", 1);
+        receitaFrango.addIngrediente("Molho", 1);
+        receitaFrango.addIngrediente("Queijo", 1);
+        receitaFrango.addIngrediente("Frango", 20);
+        receitaFrango.addIngrediente("Catupiry", 6);
+
+        ReceitaPizza receitaQuatroQueijos = new ReceitaPizza();
+        receitaQuatroQueijos.addIngrediente("Massa", 1);
+        receitaQuatroQueijos.addIngrediente("Molho", 1);
+        receitaQuatroQueijos.addIngrediente("Queijo", 4);
+
+        receitasPizza.put("Pepperoni", receitaPepperoni);
+        receitasPizza.put("Marguerita", receitaMarguerita);
+        receitasPizza.put("Frango", receitaFrango);
+        receitasPizza.put("Quatro Queijos", receitaQuatroQueijos);
     }
 
     private class GerenciadorMensagem extends CyclicBehaviour {
