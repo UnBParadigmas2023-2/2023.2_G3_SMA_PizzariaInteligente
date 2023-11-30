@@ -6,6 +6,7 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.util.HashMap;
 import java.util.Map;
+import pizzariainteligente.ReceitaPizza;
 
 public class AgenteEstoque extends Agent {
 
