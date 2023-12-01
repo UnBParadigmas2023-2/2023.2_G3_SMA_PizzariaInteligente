@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class AgenteController extends Agent {
 
     public void setup() {
-        // Adicionar um comportamento que exibe o menu
         addBehaviour(new MenuBehaviour());
     }
 
@@ -21,7 +20,7 @@ public class AgenteController extends Agent {
             int escolha;
 
             do {
-                System.out.println("-----------------Menu---------------");
+                System.out.println("-----------------MARIO'S PIZZARIA---------------");
                 System.out.println("1. Pedir pizza");
                 System.out.println("2. Encerrar programa");
                 System.out.println("-------------------------------------");
@@ -34,6 +33,7 @@ public class AgenteController extends Agent {
                             msgRx.addReceiver(new AID("estoque", false));
                             msgRx.setContent(adicionarPizza());
                             send(msgRx);
+                            System.out.println("Pizza " + msgRx.getContent() + " enviada para verificação no estoque");
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

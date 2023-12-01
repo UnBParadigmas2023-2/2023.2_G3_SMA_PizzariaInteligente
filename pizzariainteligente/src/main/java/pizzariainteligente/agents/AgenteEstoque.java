@@ -15,6 +15,8 @@ public class AgenteEstoque extends Agent {
 
     @Override
     protected void setup() {
+        System.out.println("Oi! Sou a Peach,a gerente de estoque!");
+        
         populaEstoqueIngredientes();
         populaReceitaPizzas();
         addBehaviour(new GerenciadorMensagem());
@@ -96,20 +98,20 @@ public class AgenteEstoque extends Agent {
                     System.out.println("Enviado para montagem: " + saborEscolhido);
                 }
                 else {
-                    ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+                    ACLMessage msgRx = new ACLMessage(ACLMessage.CANCEL);
                     msgRx.addReceiver(new AID("recepcao", false));
                     msgRx.setContent(saborEscolhido+"-ingredientes insuficientes");
                     send(msgRx);
 
-                    System.out.println("enviado pra recepcao");
+                    System.out.println("Pedido cancelado notificado a recepção");
                 }
             } else {
-                ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+                ACLMessage msgRx = new ACLMessage(ACLMessage.CANCEL);
                 msgRx.addReceiver(new AID("recepcao", false));
                 msgRx.setContent(saborEscolhido+"-sabor não existe");
                 send(msgRx);
 
-                System.out.println("enviado pra recepcao");
+                System.out.println("Pedido cancelado notificado a recepção");
             }
         }
 
