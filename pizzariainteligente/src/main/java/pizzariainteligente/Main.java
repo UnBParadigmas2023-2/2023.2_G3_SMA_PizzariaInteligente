@@ -23,6 +23,8 @@ public class Main {
       seller.start();
       seller = container.createNewAgent("assador", "pizzariainteligente.agents.AgenteAssador", null);
       seller.start();
+      seller = container.createNewAgent("controller", "pizzariainteligente.agents.AgenteController", null);
+      seller.start();
 
     } catch (Exception e) {
       e.printStackTrace();
