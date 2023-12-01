@@ -11,22 +11,7 @@ import jade.lang.acl.ACLMessage;
 
 public class AgenteAssador extends Agent {
 	public void setup() {
-		addBehaviour(new TickerBehaviour(this, 20000) {
-			public void onTick() {
-				ACLMessage msgPizzaAssar = receive();
-				if (msgPizzaAssar != null) {
-					System.out.println("Pizza assando: " + msgPizzaAssar.getContent());
-
-					ACLMessage msgPizzaPronta = new ACLMessage(ACLMessage.REQUEST);
-					msgPizzaPronta.addReceiver(new AID("recepcao", false));
-					msgPizzaPronta.setContent(msgPizzaAssar.getContent());
-					send(msgPizzaPronta);
-					System.out.println("Enviado para recepcao: " + msgPizzaAssar.getContent());
-				} else {
-					block();
-				}
-			}
-		});
+		System.out.println("Its A Mi, Mario! O assador de pizzas!");
 
 		List<String> pizzasAssar = new ArrayList<String>();
 
@@ -35,9 +20,9 @@ public class AgenteAssador extends Agent {
 			public void onTick() {
 				if (pizzasAssar.size() > 0) {
 					String pizzaAtual = pizzasAssar.remove(0);
-					System.out.println("Assado pizza: " + pizzaAtual);
+					System.out.println("Assando pizza " + pizzaAtual + "...");
 
-					ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
+					ACLMessage msgRx = new ACLMessage(ACLMessage.CONFIRM);
 					msgRx.addReceiver(new AID("recepcao", false));
 					msgRx.setContent(pizzaAtual);
 					send(msgRx);

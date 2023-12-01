@@ -11,7 +11,7 @@ import jade.lang.acl.ACLMessage;
 
 public class AgenteMontagem extends Agent {
     public void setup() {
-        System.out.println("Olá, sou o agente montador");
+        System.out.println("Olá! Sou Luigi, o montador de pizzas!");
 
         List<String> pizzasMontar = new ArrayList<String>();
 
@@ -20,7 +20,7 @@ public class AgenteMontagem extends Agent {
 			public void onTick() {
                 if (pizzasMontar.size() > 0){
                     String pizzaAtual = pizzasMontar.remove(0);
-                    System.out.println("Montado pizza: " + pizzaAtual);
+                    System.out.println("Montando pizza " + pizzaAtual + "...");
                     
                     ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
                     msgRx.addReceiver(new AID("assador", false));

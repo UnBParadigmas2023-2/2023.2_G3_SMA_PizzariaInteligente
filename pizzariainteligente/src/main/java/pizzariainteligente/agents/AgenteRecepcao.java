@@ -14,97 +14,35 @@ public class AgenteRecepcao extends Agent {
 
 	List<String> pizzasEntregar = new ArrayList<String>();
 
-    public void setup() {
+	public void setup() {
+		System.out.println("Olá! Eu sou Bowser, o recepcionista!");
 
 		addBehaviour(new CyclicBehaviour() {
 			public void action() {
 				ACLMessage msgRx = receive();
 				if (msgRx != null) {
-                    System.out.println("Pizza Recebida para entregar: " + msgRx.getContent());
-                    pizzasEntregar.add(msgRx.getContent());
-                    System.out.println("Pizzas na fila para entregar: " + String.join(", ", pizzasEntregar));
+					switch (msgRx.getPerformative()) {
+						case ACLMessage.CONFIRM:
+							System.out.println("Pizza Recebida para entregar: " + msgRx.getContent());
+							pizzasEntregar.add(msgRx.getContent());
+							System.out.println("Pizzas na fila para entregar: " + String.join(", ", pizzasEntregar));
+							
+							break;
+						case ACLMessage.CANCEL:
+							String[] info = msgRx.getContent().split("-");
+							String pedido = info[0];
+							String motivo = info[1];
+							System.out.println("Nao foi possivel concluir o pedido da pizza de " + pedido+" por conta de "+motivo);
+
+							break;
+						default:
+							break;
+					}
 				} else {
 					block();
 				}
 			}
 		});
 
-		addBehaviour(new OneShotBehaviour(){
-			public void action() {
-				menu();
-			}
-		});
-
 	}
-
-	public void menu(){
-
-		int opcao;
-		Scanner entrada = new Scanner(System.in);
-
-		do{
-
-			System.out.println("\tPizzaria inteligente");
-			System.out.println("1. Adicionar pizza");
-			System.out.println("2. Entregar pizza");
-			System.out.println("3. verificar filas");
-			System.out.println("4. sair");
-			System.out.println("Opcao:");
-
-
-			opcao = entrada.nextInt();
-			
-			switch(opcao){
-			case 1:
-				adicionarPizza();
-				break;
-				
-			case 2:
-				entregarPizza();
-				break;
-				
-			case 3:
-				verificarFilas();
-				break;
-
-			default:
-				System.out.println("Opção inválida.");
-				break;
-
-			}
-
-		} while(opcao != 4);
-		
-    }
-
-	public void adicionarPizza(){
-		System.out.println("Qual pizza você quer?");
-		Scanner in = new Scanner(System.in); 
-		String pizzaEscolhida = in.nextLine();
-
-		ACLMessage msgRx = new ACLMessage(ACLMessage.REQUEST);
-			msgRx.addReceiver(new AID("montador", false));
-			msgRx.setContent(pizzaEscolhida);  
-			send(msgRx);
-			System.out.println("Enviado para montagem: " + pizzaEscolhida);
-				
-		return;
-
-    }
-    
-    public void entregarPizza(){
-
-        System.out.println("Qual pizza você quer entregar?\n");
-		for (int i = 0; i < pizzasEntregar.size(); i++) {
-			System.out.println(i + 1 + ". " + pizzasEntregar.get(i));
-		}
-		
-		Scanner in = new Scanner(System.in); 
-		pizzasEntregar.remove(in.nextInt() - 1);
-
-    }
-    
-    public void verificarFilas(){
-        System.out.println("Você entrou no método Exclui.");
-    }
 }
