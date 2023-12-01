@@ -39,6 +39,9 @@ public class AgenteController extends Agent {
                         }
 
                         break;
+                    case 2:
+                        System.out.println("Obrigado por ter vindo!");
+                        break;
                     default:
                         System.out.println("Opção inválida.");
                         break;
@@ -46,11 +49,18 @@ public class AgenteController extends Agent {
             } while (escolha != 2);
 
             scanner.close();
+            System.exit(0);
         }
     }
 
     public String adicionarPizza(){
 		System.out.println("Qual pizza você quer?");
+        System.out.println("-----------------SABORES---------------");
+        System.out.println("Pepperoni");
+        System.out.println("Marguerita");
+        System.out.println("Frango");
+        System.out.println("Quatro Queijos");
+        System.out.println("-------------------------------------");
 		Scanner in = new Scanner(System.in); 
 		String pizzaEscolhida = in.nextLine();
 
