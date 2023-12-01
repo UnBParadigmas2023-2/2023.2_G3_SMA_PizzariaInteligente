@@ -18,10 +18,10 @@ Paradigma: SMA
 ## Sobre 
 O Projeto consistem em aplicar o paradigma de multiagentes em um sistema de pizzaria, onde cada etapa tem um agente que é capaz de realizar atividades e se comunicarem entre si, visando atender pedidos de pizza dos clientes.
 Inicialmente, nos reunimos e fizemos um esboço da nossa ideia inicial, para de fato termos uma ideia clara da melhor forma de lidar com o projeto: 
-[Diagrama](./assets/OverCooked.png)
+![Diagrama](./assets/OverCooked.png)
 
 ## Screenshots
-[Sistema funcionando](./assets/sistema.jpeg)
+![Sistema funcionando](./assets/sistema.jpeg)
 
 ## Instalação 
 **Linguagens**: Java<br>
