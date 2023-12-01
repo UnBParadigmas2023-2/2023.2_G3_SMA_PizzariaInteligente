@@ -16,18 +16,17 @@ Paradigma: SMA
 | 16/0141842 | Philipe Rosa Serafim              |
 
 ## Sobre 
-O Projeto consistem em aplicar o paradigma de sistemas multiagentes em um jogo de pizzaria, onde cada etapa tem um agente que é capaz de realizar atividades e se comuunicarem entre si.
+O Projeto consistem em aplicar o paradigma de multiagentes em um sistema de pizzaria, onde cada etapa tem um agente que é capaz de realizar atividades e se comunicarem entre si, visando atender pedidos de pizza dos clientes.
 Inicialmente, nos reunimos e fizemos um esboço da nossa ideia inicial, para de fato termos uma ideia clara da melhor forma de lidar com o projeto: 
+[Diagrama](./assets/OverCooked.png)
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+[Sistema funcionando](./assets/sistema.jpeg)
 
 ## Instalação 
 **Linguagens**: Java<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+**Tecnologias**: Jade<br>
+
 
 ## Uso 
 Explique como usar seu projeto.
@@ -35,14 +34,7 @@ Procure ilustrar em passos, com apoio de telas do software, seja com base na int
 Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
+
 
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
@@ -58,11 +50,26 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Philipe Rosa Serafim |  |  |
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+### Lições Aprendidas
+- Paradigma Multifuncional: O grupo conseguiu entender a teoria e conseguir aplicar o paradigma em um projeto real, explorando suas especifidades
+
+- Jade: Apesar das dificuldade de configuração, foi possível imergir um pouco mais sobre esse framework
+
+- Trabalho em equipe: Se reunir para o desenvolvimento nos proporcionou uma grande troca de conhecimentos, o que aumentou o aprendizado de todos que colaboraram
+
+
+### Percepções
+De início o grupo teve muita dificuldade com as configurações atreladas com o pouco tempo. Conforme fomos nos reunindo, conseguimos resolver situações e colaborar com o projeto no geral.
+
+### Contribuições e Fragilidades
+Como contribuições, a nossa capacidade de escutar ideias diferentes e tomar a melhor decisão em conjunto nos fez contornar situações problemas durante o desenvolvimento;
+
+Já em fragilidades, o grupo teve maior dificuldade na configuração de um ambiente uniforme e adequados para todos, uma vez que o framework escolhido possui muitas especifidades
+
+### Trabalhos Futuros
+- Interface gráfica: Trazer uma melhor apresentação dos dados, que no momento se encontra via terminal
+
+- Criar id's para as pizzas: gerar id's que facilitem a identificação pelos usuários
 
 ## Fontes
 Referencie, adequadamente, as referências utilizadas.
