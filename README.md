@@ -1,42 +1,29 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
-
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2023.2_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague esses comentários)
-
-# NomeDoProjeto
-
-**Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+# Pizzaria Inteligente
+Disciplina: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01
+Nro do Grupo: 03
+Paradigma: SMA
 
 ## Alunos
-|Matrícula | Aluno |
-| -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| Matrícula  | Aluno                             |
+| ---------- | --------------------------------- |
+| 19/0010606 | Artur de Sousa Vieira             |
+| 19/0024950 | Arthur de Melo Garcia             |
+| 19/0011424 | Carlos Eduardo Miranda Roriz      |
+| 17/0032591 | Edvan Barreira Gomes Júnior       |
+| 19/0109963 | João Victor Teixeira Batista      |
+| 19/0112123 | Lucas Gabriel Sousa Camargo Paiva |
+| 20/0023411 | Luíza Esteves dos Santos          |
+| 16/0141842 | Philipe Rosa Serafim              |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
-Capriche nessa seção, pois ela é a primeira a ser lida pelos interessados no projeto.
+O Projeto consistem em aplicar o paradigma de sistemas multiagentes em um jogo de pizzaria, onde cada etapa tem um agente que é capaz de realizar atividades e se comuunicarem entre si.
+Inicialmente, nos reunimos e fizemos um esboço da nossa ideia inicial, para de fato termos uma ideia clara da melhor forma de lidar com o projeto: 
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
+**Linguagens**: Java<br>
 **Tecnologias**: xxxxxx<br>
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 Insira um manual ou um script para auxiliar ainda mais.
@@ -61,7 +48,14 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+|Artur de Sousa Vieira | |  |
+|Arthur de Melo Garcia |  |  |
+|Carlos Eduardo Miranda Roriz |  |  |
+|Edvan Barreira Gomes Júnior |  |  |
+|João Victor Teixeira Batista |  |  |
+|Lucas Gabriel Sousa Camargo Paiva |  |  |
+|Luíza Esteves dos Santos | |  |
+|Philipe Rosa Serafim |  |  |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
