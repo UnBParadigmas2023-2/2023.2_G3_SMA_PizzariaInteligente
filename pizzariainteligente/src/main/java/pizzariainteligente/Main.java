@@ -14,16 +14,22 @@ public class Main {
     ContainerController container = rt.createMainContainer(p);
     AgentController seller;
 
+    String AgenteRecepcao = "pizzariainteligente.agents.AgenteRecepcao";
+    String AgenteEstoque = "pizzariainteligente.agents.AgenteRecepcao";
+    String AgenteMontagem = "pizzariainteligente.agents.AgenteRecepcao";
+    String AgenteAssador = "pizzariainteligente.agents.AgenteRecepcao";
+    String AgenteController = "pizzariainteligente.agents.AgenteRecepcao";
+
     try {
-      seller = container.createNewAgent("recepcao", "pizzariainteligente.agents.AgenteRecepcao", null);
+      seller = container.createNewAgent("recepcao", AgenteRecepcao, null);
       seller.start();
-      seller = container.createNewAgent("estoque", "pizzariainteligente.agents.AgenteEstoque", null);
+      seller = container.createNewAgent("estoque", AgenteEstoque, null);
       seller.start();
-      seller = container.createNewAgent("montador", "pizzariainteligente.agents.AgenteMontagem", null);
+      seller = container.createNewAgent("montador", AgenteMontagem, null);
       seller.start();
-      seller = container.createNewAgent("assador", "pizzariainteligente.agents.AgenteAssador", null);
+      seller = container.createNewAgent("assador", AgenteAssador, null);
       seller.start();
-      seller = container.createNewAgent("controller", "pizzariainteligente.agents.AgenteController", null);
+      seller = container.createNewAgent("controller", AgenteController, null);
       seller.start();
 
     } catch (Exception e) {
