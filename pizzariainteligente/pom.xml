@@ -9,7 +9,7 @@
         <repository>
             <id>jade-repo</id>
             <name>Jade repository</name>
-            <url>https://jade.tilab.com/maven/</url>
+            <url>https://.jadetilab.com/maven/</url>
         </repository>
     </repositories>
     <properties>

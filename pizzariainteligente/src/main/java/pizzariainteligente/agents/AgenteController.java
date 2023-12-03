@@ -53,14 +53,18 @@ public class AgenteController extends Agent {
         }
     }
 
-    public String adicionarPizza(){
-		System.out.println("Qual pizza você quer?");
+    public void printMenu() {
+        System.out.println("Qual pizza você quer?");
         System.out.println("-----------------SABORES---------------");
         System.out.println("Pepperoni");
         System.out.println("Marguerita");
         System.out.println("Frango");
         System.out.println("Quatro Queijos");
         System.out.println("-------------------------------------");
+    }
+
+    public String adicionarPizza(){
+        printMenu();
 		Scanner in = new Scanner(System.in); 
 		String pizzaEscolhida = in.nextLine();
 

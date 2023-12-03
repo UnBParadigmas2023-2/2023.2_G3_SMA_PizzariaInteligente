@@ -22,7 +22,7 @@ public class AgenteEstoque extends Agent {
         addBehaviour(new GerenciadorMensagem());
     }
 
-    private void populaEstoqueIngredientes() {
+    private void printEstoque() {
         estoqueIngredientes = new HashMap<>();
         estoqueIngredientes.put("Massa", 50);
         estoqueIngredientes.put("Molho", 30);
@@ -31,6 +31,9 @@ public class AgenteEstoque extends Agent {
         estoqueIngredientes.put("Folhas manjericao", 18);
         estoqueIngredientes.put("Frango", 40);
         estoqueIngredientes.put("Catupiry", 20);
+    }
+    private void populaEstoqueIngredientes() {
+        printEstoque();
     }
 
     private void populaReceitaPizzas() {
