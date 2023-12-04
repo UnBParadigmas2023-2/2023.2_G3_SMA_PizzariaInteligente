@@ -37,7 +37,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("front.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1600, 900));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
