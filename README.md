@@ -28,10 +28,46 @@ Inicialmente, nos reunimos e fizemos um esboço da nossa ideia inicial, para de 
 **Tecnologias**: Jade<br>
 
 
-## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
-Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
+## Uso
+Como primeiro passo, clone o repositório para a sua máquina:
+```
+git clone https://github.com/UnBParadigmas2023-2/2023.2_G3_SMA_PizzariaInteligente.git
+``` 
+
+Para executar o projeto, é necessário ter instalado  no seu dispositivo:
+- Java 1.11
+- JDK 18.0.2.1
+- Apache Maven 3.9.6
+
+Além disso, é preciso configurar para que o Maven reconheça o Jade como um framework seguro, permitindo que o Maven faça as indexações corretas e use sua bibliotecas. Para isso, basta adicionar o certificado do Jade no arquivo 'cacerts' do JDK. Uma cópia do certificado do jade pode se contrada neste reposotório em: "pizzariainteligente\src\assets\certs\jade.tilab.com", mas também pode ser gerada no seguinte site [https://jade.tilab.com/maven/].
+
+Para executar esse passo, utilize o comando a seguir no mesmo diretório em que o certificado do Jade se encontra.
+```
+keytool -import -alias example -keystore "JAVA_PATH" -file ARQUIVO
+
+```
+- JAVA_PATH deve ser substituido pelo caminho do 'cacert'. Exemplo em dispositivos Windows:
+```
+ "C:\Program Files\Java\jdk-1.8\jre\lib\security\cacerts"
+ ```
+ - ARQUIVO deve ser substituido pelo nome do arquivo de certificado. 
+
+Após executar esse comando, será solicitado uma palavra chave para senha, utilize _changeit_, após isso confirme que certificado é confiável digitando "sim" (pode ser "yes", varia de acordo com a lingua do Sistema Operacional).
+
+Caso você esteja usando o IntelliJ, para configurar o Jade siga os passos do video [https://youtu.be/DJTJNHxFkvc?si=_iLiLgpJjZBXYW8v].
+
+Concluidos esses passos, execute o build do projeto com:
+
+```
+mvn clean validate install
+```
+
+Após isso execute seguinte arquivo para rodar o projeto: 
+```
+pizzariainteligente\src\main\java\pizzariainteligente\Main.java 
+```
+
+
 
 ## Vídeo
 
@@ -43,7 +79,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Artur de Sousa Vieira | |  |
 |Arthur de Melo Garcia |  |  |
 |Carlos Eduardo Miranda Roriz |  |  |
-|Edvan Barreira Gomes Júnior |  |  |
+|Edvan Barreira Gomes Júnior | Ajudou na configuração do maven, participou da construção do front e na tentativa de integração entre front e back |  |
 |João Victor Teixeira Batista |  |  |
 |Lucas Gabriel Sousa Camargo Paiva |  |  |
 |Luíza Esteves dos Santos | |  |
