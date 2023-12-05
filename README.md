@@ -43,7 +43,7 @@ Além disso, é preciso configurar para que o Maven reconheça o Jade como um fr
 
 Para executar esse passo, utilize o comando a seguir no mesmo diretório em que o certificado do Jade se encontra.
 ```
-keytool -import -alias example -keystore "JAVA_PATH" -file ARQUIVO
+keytool -import -alias example -keystore "CACERTS_PATH" -file ARQUIVO
 
 ```
 - JAVA_PATH deve ser substituido pelo caminho do 'cacert'. Exemplo em dispositivos Windows:
@@ -52,9 +52,10 @@ keytool -import -alias example -keystore "JAVA_PATH" -file ARQUIVO
  ```
  - ARQUIVO deve ser substituido pelo nome do arquivo de certificado. 
 
-Após executar esse comando, será solicitado uma palavra chave para senha, utilize _changeit_, após isso confirme que certificado é confiável digitando "sim" (pode ser "yes", varia de acordo com a lingua do Sistema Operacional).
+Após executar esse comando, será solicitado uma palavra chave para senha, utilize _changeit_, após isso confirme que certificado é confiável digitando "sim" (pode ser "yes", varia de acordo com a lingua do Sistema Operacional). Essa senha é a padrão e recomendada, mas pode ser alterada de acordo com a necessidade.
 
 Caso você esteja usando o IntelliJ, para configurar o Jade siga os passos do video [https://youtu.be/DJTJNHxFkvc?si=_iLiLgpJjZBXYW8v].
+
 
 Concluidos esses passos, execute o build do projeto com:
 
@@ -70,20 +71,21 @@ pizzariainteligente\src\main\java\pizzariainteligente\Main.java
 
 
 ## Vídeo
+[Link do vídeo da apresentação do projeto](https://www.youtube.com/watch?v=rUDn1C3R0Wo)
 
 
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-|Artur de Sousa Vieira | |  |
-|Arthur de Melo Garcia |  |  |
-|Carlos Eduardo Miranda Roriz |  |  |
-|Edvan Barreira Gomes Júnior | Ajudou na configuração do maven, participou da construção do front e na tentativa de integração entre front e back |  |
-|João Victor Teixeira Batista |  |  |
-|Lucas Gabriel Sousa Camargo Paiva |  |  |
-|Luíza Esteves dos Santos | |  |
-|Philipe Rosa Serafim |  |  |
+|Artur de Sousa Vieira | Documentação da ideia, construção dos agentes, resolução de problemas, idealização do projeto| Excelente |
+|Arthur de Melo Garcia | Participou da apresentação gravada do projeto | Regular |
+|Carlos Eduardo Miranda Roriz | Construção dos agentes, resolução de problemas | Excelente  |
+|Edvan Barreira Gomes Júnior | Ajudou na configuração do maven, participou da construção do front e na tentativa de integração entre front e back | Excelente |
+|João Victor Teixeira Batista |Construção dos agentes, resolução de problemas e configuração do projeto  |Excelente  |
+|Lucas Gabriel Sousa Camargo Paiva | Construção dos agentes, resolução de problemas, documentação da ideia, configuração  | Excelente |
+|Luíza Esteves dos Santos |Construção dos agentes, resolução de problemas, documentação da ideia |  Excelente |
+|Philipe Rosa Serafim | Congiguração do maven, construção do front, tentou integrar front com back e auxiliou na resolução de problemas | Excelente |
 
 ## Outros 
 ### Lições Aprendidas
@@ -108,5 +110,6 @@ Já em fragilidades, o grupo teve maior dificuldade na configuração de um ambi
 - Criar id's para as pizzas: gerar id's que facilitem a identificação pelos usuários
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+- https://aprender3.unb.br/pluginfile.php/2649359/mod_label/intro/tutorialPlataformaParadigmaSMA-Linux-IOS.pdf
+- http://intra.serpro.gov.br/tema/tematec/jade-framework-java-para-sistemas-baseados-em-agentes
+- http://intra.serpro.gov.br/tema/tematec/jade-framework-java-para-sistemas-baseados-em-agentes
